@@ -18,6 +18,7 @@ explore: inventory_items {
 # This explore contains multiple views
 explore: order_items {
   sql_always_where: ${order_items.returned_date} is not null ;;
+  sql_always_having: ${total_sale_price} > 200  ;;
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
