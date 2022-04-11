@@ -95,6 +95,11 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: state_city {
+    type: string
+    sql: concat(${state}, '/', ${city});;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, first_name, last_name, events.count, order_items.count]
