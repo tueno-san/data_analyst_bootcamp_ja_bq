@@ -41,7 +41,12 @@ explore: order_items {
 
 
 explore: users {
+  group_label: "Lookerブートキャンプ"
+  label: "ユーザ一覧"
+  description: "ユーザーを起点とした分析"
+  view_label: "ユーザー情報"
   join: order_items {
+    view_label: "オーダー情報"
     type: left_outer
     sql_on: ${users.id} = ${order_items.user_id} ;;
     relationship: one_to_many
