@@ -24,7 +24,7 @@ explore: order_items {
   # }
   conditionally_filter: {
     filters: [order_items.created_year: "2 years"]
-    unless: [user_id]
+    unless: [users.id]
   }
   join: users {
     type: left_outer
