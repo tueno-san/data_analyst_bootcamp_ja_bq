@@ -128,9 +128,21 @@ view: order_items {
     sql: ${sale_price} ;;
   }
 
+  measure: total_sales_of_email_users {
+    type: sum
+    sql: ${sale_price} ;;
+    filters: [users.is_email: "yes"]
+  }
+
   measure: average_sale_price {
     type: average
     sql: ${sale_price} ;;
+  }
+
+  measure: parcentage_sales_of_email_users {
+    type: number
+    value_format_name: percent_1
+    sql: 1.0*${total_sales_of_email_users} / NULLIF(${total_sale_price}, 0) ;;
   }
 
   # ----- Sets of fields for drilling ------
