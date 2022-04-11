@@ -97,6 +97,17 @@ view: users {
     sql: ${TABLE}.traffic_source ;;
   }
 
+  dimension: is_email {
+    type: yesno
+    sql:
+      CASE ${traffic_source}
+      WHEN 'Email'THEN TRUE
+      ELSE FALSE
+      END
+    ;;
+
+  }
+
   dimension: zip {
     label: "郵便番号"
     type: zipcode
