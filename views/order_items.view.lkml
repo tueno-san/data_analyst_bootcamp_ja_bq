@@ -86,6 +86,14 @@ view: order_items {
     sql: ${TABLE}.shipped_at ;;
   }
 
+  dimension_group: shipping {
+    type: duration
+    #datatype: date
+    sql_start: ${shipped_date} ;;
+    sql_end: ${delivered_date} ;;
+    intervals: [day, week]
+  }
+
   dimension: status {
     label: "ステータス"
     type: string
