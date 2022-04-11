@@ -19,6 +19,9 @@ explore: inventory_items {
 explore: order_items {
   sql_always_where: ${order_items.returned_date} is not null ;;
   sql_always_having: ${total_sale_price} > 200  ;;
+  always_filter: {
+    filters: [order_items.status: "Complete"]
+  }
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
