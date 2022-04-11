@@ -13,6 +13,14 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: age_tier {
+    label: "年齢層"
+    type: tier
+    sql: ${age} ;;
+    tiers: [18, 25, 35, 45, 55, 65, 75, 90]
+    style: integer
+  }
+
   dimension: city {
     label: "都市"
     type: string
