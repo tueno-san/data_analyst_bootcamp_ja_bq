@@ -1,6 +1,7 @@
 connection: "looker-private-demo"
 # include all the views
 include: "/views/*.view"
+# sample
 
 datagroup: data_analyst_bootcamp_ja_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
