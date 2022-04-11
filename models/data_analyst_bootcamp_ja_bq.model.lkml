@@ -50,6 +50,9 @@ explore: users {
   label: "ユーザ一覧"
   description: "ユーザーを起点とした分析"
   view_label: "ユーザー情報"
+  always_filter: {
+    filters: [order_items.created_year: "2 years"]
+  }
   join: order_items {
     view_label: "オーダー情報"
     type: left_outer
