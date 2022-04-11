@@ -112,6 +112,11 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: count_order_id {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
