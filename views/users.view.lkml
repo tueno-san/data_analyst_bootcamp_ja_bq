@@ -13,6 +13,14 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: age_range {
+    label: "年代"
+    type: tier
+    tiers: [18, 25, 35, 45, 55, 65]
+    style: integer
+
+  }
+
   dimension: city {
     label: "都市"
     type: string
@@ -81,6 +89,12 @@ view: users {
     label: "州"
     type: string
     sql: ${TABLE}.state ;;
+  }
+
+  dimension: state_city {
+    label: "州と市"
+    type:  string
+    sql: CONCAT(${state}, ${city}) ;;
   }
 
   dimension: traffic_source {
