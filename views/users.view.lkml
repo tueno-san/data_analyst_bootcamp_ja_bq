@@ -103,9 +103,9 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
-  dimension: state_city {
+  dimension: city_state {
     type: string
-    sql: concat(${state}, '/', ${city});;
+    sql: concat(${city}, '/', ${state});;
   }
 
   measure: count {
