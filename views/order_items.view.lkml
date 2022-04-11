@@ -117,6 +117,12 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
+  measure: count_email_users {
+    type: count_distinct
+    sql: ${user_id} ;;
+    filters: [users.is_email: "yes"]
+  }
+
   measure: total_sale_price {
     type: sum
     sql: ${sale_price} ;;
