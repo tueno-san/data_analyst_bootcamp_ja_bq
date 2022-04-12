@@ -26,6 +26,7 @@ view: order_items {
   dimension_group: delivered {
     label: "到着"
     type: time
+    datatype: date
     timeframes: [
       raw,
       time,
@@ -37,6 +38,7 @@ view: order_items {
     ]
     sql: ${TABLE}.delivered_at ;;
   }
+
 
   dimension: inventory_item_id {
     type: number
@@ -74,6 +76,7 @@ view: order_items {
   dimension_group: shipped {
     label: "出荷"
     type: time
+    datatype: date
     timeframes: [
       raw,
       time,
