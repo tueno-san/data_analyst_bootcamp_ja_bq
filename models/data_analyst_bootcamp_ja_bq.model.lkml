@@ -7,6 +7,10 @@ datagroup: data_analyst_bootcamp_ja_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+datagroup: reflesh_cache_1day_datagroup {
+  max_cache_age: "24 hour"
+}
+
 persist_with: data_analyst_bootcamp_ja_default_datagroup
 
 
@@ -57,6 +61,7 @@ explore: users {
   always_filter: {
     filters: [order_items.created_date: "before today"]
   }
+  persist_with: reflesh_cache_1day_datagroup
   join: order_items {
     view_label: "オーダー情報"
     type: left_outer
