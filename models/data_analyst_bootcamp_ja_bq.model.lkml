@@ -54,6 +54,12 @@ explore: order_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+
+  join: users_facts {
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users_facts.user_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: order_facts {}
@@ -70,6 +76,10 @@ explore: users {
     filters: [order_items.created_date: "before today"]
   }
   persist_with: reflesh_cache_1day_datagroup
+  access_filter: {
+    field: state
+    user_attribute: state
+  }
   join: order_items {
     view_label: "オーダー情報"
     type: left_outer
