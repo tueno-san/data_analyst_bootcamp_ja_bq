@@ -8,6 +8,7 @@ datagroup: data_analyst_bootcamp_ja_default_datagroup {
 }
 
 datagroup: reflesh_cache_1day_datagroup {
+  sql_trigger: SELECT cerrent_date ;;
   max_cache_age: "24 hour"
 }
 
