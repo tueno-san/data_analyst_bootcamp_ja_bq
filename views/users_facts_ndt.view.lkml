@@ -1,4 +1,4 @@
-view: add_a_unique_name_1649998707 {
+view: users_facts_ndt {
   derived_table: {
     explore_source: order_items {
       column: user_id {}
