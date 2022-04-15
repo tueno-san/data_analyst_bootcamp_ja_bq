@@ -1,4 +1,4 @@
-view: user_facts {
+view: users_facts {
   derived_table: {
     sql: SELECT
         order_items.user_id as user_id,
