@@ -19,6 +19,10 @@ datagroup: order_items_datagroup {
 
 persist_with: data_analyst_bootcamp_ja_default_datagroup
 
+access_grant: is_pii_viewer {
+  user_attribute: is_pii_viewer
+  allowed_values: ["Yes"]
+}
 
 ### Whitespaces ####
 

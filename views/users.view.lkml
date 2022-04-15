@@ -54,12 +54,14 @@ view: users {
     label: "Eメール"
     type: string
     sql: ${TABLE}.email ;;
+    required_access_grants: [is_pii_viewer]
   }
 
   dimension: first_name {
     label: "名"
     type: string
     sql: ${TABLE}.first_name ;;
+    required_access_grants: [is_pii_viewer]
   }
 
   dimension: gender {
@@ -71,6 +73,7 @@ view: users {
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;
+    required_access_grants: [is_pii_viewer]
   }
 
   dimension: latitude {
