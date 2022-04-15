@@ -11,6 +11,11 @@ datagroup: reflesh_cache_1day_datagroup {
   max_cache_age: "24 hour"
 }
 
+datagroup: order_items_datagroup {
+  sql_trigger: SELECT MAX(created_time) FROM order_items ;;
+  max_cache_age: "4 hour"
+}
+
 persist_with: data_analyst_bootcamp_ja_default_datagroup
 
 
@@ -26,6 +31,7 @@ explore: order_items {
   # always_filter: {
   #   filters: [order_items.status: "Complete"]
   # }
+  persist_with: order_items_datagroup
   conditionally_filter: {
     filters: [order_items.created_year: "2 years"]
     unless: [users.id]
