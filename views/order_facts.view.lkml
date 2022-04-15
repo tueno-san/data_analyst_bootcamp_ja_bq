@@ -12,8 +12,11 @@ view: order_facts {
       #   value: "2 years"
       # }
     }
+    sql_trigger_value: SELECT current_date ;;
+    partition_keys: ["order_id"]
   }
   dimension: order_id {
+    primary_key: yes
     label: "オーダーID"
     type: number
   }
