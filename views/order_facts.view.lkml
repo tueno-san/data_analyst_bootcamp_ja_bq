@@ -23,4 +23,5 @@ view: order_facts {
   dimension: total_sale_price {
     type: number
   }
+  dimension: rank {}
 }
