@@ -54,7 +54,11 @@ view: users {
     label: "Eメール"
     type: string
     sql: ${TABLE}.email ;;
-    required_access_grants: [is_pii_viewer]
+    # required_access_grants: [is_pii_viewer]
+    link: {
+      label: "eコマースサンプルユーザーダッシュボード"
+      url: "/dashboards/1813?Email={{ value | encode_uri }}"
+    }
   }
 
   dimension: first_name {
