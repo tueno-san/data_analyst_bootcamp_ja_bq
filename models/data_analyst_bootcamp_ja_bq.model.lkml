@@ -99,3 +99,5 @@ explore: users {
     relationship: one_to_many
   }
 }
+
+explore: brand_facts_ndt {}
