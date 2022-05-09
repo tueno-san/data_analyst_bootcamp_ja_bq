@@ -6,9 +6,13 @@ view: brand_facts_ndt {
       derived_column: brand_rank {
         sql: rank() over(order by total_revenue desc) ;;
       }
-      filters: {
-        field: order_items.created_year
-        value: "2 years"
+      # filters: {
+      #   field: order_items.created_date
+      #   value: "365 days"
+      # }
+      bind_filters: {
+        from_field: order_items.created_date
+        to_field: order_items.created_date
       }
     }
   }
@@ -30,9 +34,5 @@ view: brand_facts_ndt {
   dimension: brand_top_5 {
     type: string
     sql:  CASE WHEN ${brand_rank} <= 5 THEN ${brand} ELSE 'Other' END;;
-  }
-  measure: total_revenue_top_5 {
-    type: sum
-    sql: ${total_revenue} ;;
   }
 }

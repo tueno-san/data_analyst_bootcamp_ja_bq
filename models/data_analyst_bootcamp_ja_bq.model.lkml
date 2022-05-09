@@ -72,6 +72,12 @@ explore: order_items {
     sql_on: ${order_items.user_id} = ${users_facts.user_id} ;;
     relationship: many_to_one
   }
+
+  join: brand_facts_ndt {
+    type: left_outer
+    sql_on: ${products.brand} = ${brand_facts_ndt.brand} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: order_facts {}
@@ -99,5 +105,3 @@ explore: users {
     relationship: one_to_many
   }
 }
-
-explore: brand_facts_ndt {}
