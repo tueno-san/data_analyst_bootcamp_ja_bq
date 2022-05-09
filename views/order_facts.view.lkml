@@ -20,11 +20,13 @@ view: order_facts {
     label: "オーダーID"
     type: number
   }
-  dimension: count {
+  dimension: item_count {
     type: number
   }
-  dimension: total_sale_price {
+  dimension: total_revenue {
     type: number
   }
-  dimension: rank {}
+  dimension: rank_revenue {
+    type: number
+  }
 }
