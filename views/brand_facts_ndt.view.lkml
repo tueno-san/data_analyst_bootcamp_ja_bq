@@ -10,17 +10,18 @@ view: brand_facts_ndt {
       #   field: order_items.created_date
       #   value: "365 days"
       # }
-      bind_filters: {
-        from_field: order_items.created_date
-        to_field: order_items.created_date
-      }
+      # bind_filters: {
+      #   from_field: order_items.created_date
+      #   to_field: order_items.created_date
+      # }
+      bind_all_filters: yes
     }
   }
   dimension: brand {
-    label: "プロダクト カテゴリ"
+    label: "ブランド"
   }
   dimension: total_revenue {
-    label: "オーダー Total Revenue"
+    label: "ブランドごとの合計金額"
     type: number
   }
 
