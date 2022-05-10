@@ -169,4 +169,35 @@ view: order_items {
       inventory_items.product_name
     ]
   }
+
+  parameter: select_created_timeframe_scale {
+    type: unquoted
+    default_value: "created_date"
+    allowed_value: {
+      label: "Date"
+      value: "created_date"
+    }
+    allowed_value: {
+      label: "Week"
+      value: "created_week"
+    }
+    allowed_value: {
+      label: "Month"
+      value: "created_month"
+    }
+  }
+
+  dimension: dynamic_scale_created_timeframe {
+    type: string
+    label_from_parameter: select_created_timeframe_scale
+    sql:
+      {% if select_created_timeframe_scale._parameter_value == 'created_date' %}
+        ${created_date}
+      {% elsif select_created_timeframe_scale._parameter_value == 'created_date' %}
+        ${created_week}
+      {% else %}
+        ${created_month}
+      {% endif %}
+    ;;
+  }
 }

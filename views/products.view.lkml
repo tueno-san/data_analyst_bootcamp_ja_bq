@@ -22,6 +22,10 @@ view: products {
     label: "カテゴリ"
     type: string
     sql: ${TABLE}.category ;;
+    link: {
+      label: "在庫"
+      url: "/explore/data_analyst_bootcamp_ja_bq/inventory_items?fields=inventory_items.product_category,inventory_items.product_name,inventory_items.count&f[inventory_items.product_category]={{value | url_encode}}"
+    }
   }
 
   dimension: cost {
