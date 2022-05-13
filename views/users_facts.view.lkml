@@ -13,7 +13,7 @@ view: users_facts {
       # sql_trigger_value: SELECT current_date ;;
       # persist_for はあまりお勧めしない
       # persist_for: "4 hours"
-      partition_keys: ["user_id"]
+      # partition_keys: ["user_id"]
   }
 
   filter: filter_date {
