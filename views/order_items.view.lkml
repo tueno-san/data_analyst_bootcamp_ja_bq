@@ -57,6 +57,7 @@ view: order_items {
   dimension_group: delivered {
     label: "到着"
     type: time
+    datatype: date
     timeframes: [
       raw,
       time,
@@ -68,6 +69,7 @@ view: order_items {
     ]
     sql: ${TABLE}.delivered_at ;;
   }
+
 
   dimension: inventory_item_id {
     type: number
@@ -122,6 +124,7 @@ view: order_items {
   dimension_group: shipped {
     label: "出荷"
     type: time
+    datatype: date
     timeframes: [
       raw,
       time,
@@ -178,6 +181,17 @@ view: order_items {
     type: count
     drill_fields: [detail*]
   }
+
+  measure: total_revenue {
+    type: sum
+    sql: ${sale_price}  ;;
+  }
+
+  measure: order_item_count {
+    type: count_distinct
+    sql: ${order_item_id} ;;
+  }
+
 
   # ----- Sets of fields for drilling ------
   set: detail {
