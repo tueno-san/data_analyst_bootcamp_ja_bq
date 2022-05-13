@@ -1,5 +1,5 @@
 view: event_session_funnel {
-    derived_table: {
+  derived_table: {
       sql: SELECT
           session_id
         , MIN(
@@ -64,11 +64,26 @@ view: event_session_funnel {
       sql: ${event2_time} < ${event3_time} ;;
     }
 
-
+    parameter: time_in_funnel_unit  {
+      type: unquoted
+      default_value: "MINUTE"
+      allowed_value: {
+        value: "SECOND"
+        label: "秒"
+      }
+      allowed_value: {
+        value: "MINUTE"
+        label: "分"
+      }
+    }
 
     dimension: time_in_funnel {
       type: number
-      sql: timestamp_diff(${event1_raw},COALESCE(${event3_raw},${event2_raw}),minute) ;;
+      sql: timestamp_diff(
+      ${event1_raw},
+      COALESCE(${event3_raw},${event2_raw}),
+      {% parameter time_in_funnel_unit %}
+      ) ;;
     }
 
     measure: count_sessions {
