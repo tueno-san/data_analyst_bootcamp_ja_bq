@@ -130,4 +130,29 @@ view: users {
     type: count
     drill_fields: [id, first_name, last_name, events.count, order_items.count]
   }
+
+  filter: filter_traffic_source {
+    type: string
+    suggest_dimension: traffic_source
+    suggest_explore: users
+  }
+
+  dimension: is_filtered_traffic_source {
+    hidden: yes
+    type: yesno
+    sql:
+      CASE
+      WHEN {% condition filter_traffic_source %} ${traffic_source} {% endcondition %}
+      THEN True
+      ELSE False
+      END
+    ;;
+  }
+
+  measure: count_filtered_traffic_source {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: [is_filtered_traffic_source: "yes"]
+  }
+
 }
