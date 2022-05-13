@@ -2,7 +2,7 @@ include: "geography.view"
 
 view: users {
   sql_table_name: `looker-private-demo.thelook.users` ;;
-  extends: [geography]
+  extends: [geography_dimensions]
 
   dimension: id {
     primary_key: yes
@@ -67,10 +67,10 @@ view: users {
     sql: ${TABLE}.traffic_source ;;
   }
 
-  # dimension: city_and_state {
-  #   type: string
-  #   sql:  CONCAT(${city}, ${state}) ;;
-  # }
+  dimension: city_and_state {
+    type: string
+    sql:  CONCAT(${city}, ${state}) ;;
+  }
 
   dimension: age_group_buckets  {
     type: tier

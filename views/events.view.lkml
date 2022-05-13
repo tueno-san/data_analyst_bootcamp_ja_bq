@@ -2,7 +2,7 @@ include: "geography.view"
 
 view: events {
   sql_table_name: `looker-private-demo.thelook.events` ;;
-  extends: [geography]
+  extends: [geography_dimensions]
 
   dimension: id {
     primary_key: yes
@@ -14,18 +14,6 @@ view: events {
     label: "ブラウザ"
     type: string
     sql: ${TABLE}.browser ;;
-  }
-
-  dimension: city {
-    label: "都市"
-    type: string
-    sql: ${TABLE}.city ;;
-  }
-
-  dimension: country {
-    label: "国"
-    type: string
-    sql: ${TABLE}.country ;;
   }
 
   dimension_group: created {
@@ -55,18 +43,6 @@ view: events {
     sql: ${TABLE}.ip_address ;;
   }
 
-  dimension: latitude {
-    label: "緯度"
-    type: number
-    sql: ${TABLE}.latitude ;;
-  }
-
-  dimension: longitude {
-    label: "経度"
-    type: number
-    sql: ${TABLE}.longitude ;;
-  }
-
   dimension: os {
     type: string
     sql: ${TABLE}.os ;;
@@ -84,12 +60,6 @@ view: events {
     sql: ${TABLE}.session_id ;;
   }
 
-  dimension: state {
-    label: "州"
-    type: string
-    sql: ${TABLE}.state ;;
-  }
-
   dimension: traffic_source {
     label: "トラフィック・ソース"
     type: string
@@ -105,12 +75,6 @@ view: events {
     label: "ユーザーID"
     type: number
     sql: ${TABLE}.user_id ;;
-  }
-
-  dimension: zip {
-    label: "郵便番号"
-    type: zipcode
-    sql: ${TABLE}.zip ;;
   }
 
   measure: count {
