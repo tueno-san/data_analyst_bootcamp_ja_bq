@@ -1,4 +1,7 @@
+include: "geography.view"
+
 view: users {
+  extends: [geography]
   sql_table_name: `looker-private-demo.thelook.users` ;;
 
   dimension: id {
@@ -21,18 +24,18 @@ view: users {
     style: integer
   }
 
-  dimension: city {
-    label: "都市"
-    type: string
-    sql: ${TABLE}.city ;;
-  }
+  # dimension: city {
+  #   label: "都市"
+  #   type: string
+  #   sql: ${TABLE}.city ;;
+  # }
 
-  dimension: country {
-    label: "国"
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}.country ;;
-  }
+  # dimension: country {
+  #   label: "国"
+  #   type: string
+  #   map_layer_name: countries
+  #   sql: ${TABLE}.country ;;
+  # }
 
   dimension_group: created {
     label: "登録"
@@ -80,23 +83,23 @@ view: users {
     required_access_grants: [is_pii_viewer]
   }
 
-  dimension: latitude {
-    label: "姓"
-    type: number
-    sql: ${TABLE}.latitude ;;
-  }
+  # dimension: latitude {
+  #   label: "緯度"
+  #   type: number
+  #   sql: ${TABLE}.latitude ;;
+  # }
 
-  dimension: longitude {
-    label: "緯度"
-    type: number
-    sql: ${TABLE}.longitude ;;
-  }
+  # dimension: longitude {
+  #   label: "経度"
+  #   type: number
+  #   sql: ${TABLE}.longitude ;;
+  # }
 
-  dimension: state {
-    label: "州"
-    type: string
-    sql: ${TABLE}.state ;;
-  }
+  # dimension: state {
+  #   label: "州"
+  #   type: string
+  #   sql: ${TABLE}.state ;;
+  # }
 
   dimension: traffic_source {
     label: "トラフィック・ソース"
@@ -115,11 +118,11 @@ view: users {
 
   }
 
-  dimension: zip {
-    label: "郵便番号"
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
+  # dimension: zip {
+  #   label: "郵便番号"
+  #   type: zipcode
+  #   sql: ${TABLE}.zip ;;
+  # }
 
   dimension: city_state {
     type: string

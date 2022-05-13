@@ -1,4 +1,7 @@
+include: "geography.view"
+
 view: events {
+  extends: [geography]
   sql_table_name: `looker-private-demo.thelook.events` ;;
 
   dimension: id {
@@ -13,17 +16,17 @@ view: events {
     sql: ${TABLE}.browser ;;
   }
 
-  dimension: city {
-    label: "都市"
-    type: string
-    sql: ${TABLE}.city ;;
-  }
+  # dimension: city {
+  #   label: "都市"
+  #   type: string
+  #   sql: ${TABLE}.city ;;
+  # }
 
-  dimension: country {
-    label: "国"
-    type: string
-    sql: ${TABLE}.country ;;
-  }
+  # dimension: country {
+  #   label: "国"
+  #   type: string
+  #   sql: ${TABLE}.country ;;
+  # }
 
   dimension_group: created {
     label: "イベント"
@@ -52,17 +55,17 @@ view: events {
     sql: ${TABLE}.ip_address ;;
   }
 
-  dimension: latitude {
-    label: "緯度"
-    type: number
-    sql: ${TABLE}.latitude ;;
-  }
+  # dimension: latitude {
+  #   label: "緯度"
+  #   type: number
+  #   sql: ${TABLE}.latitude ;;
+  # }
 
-  dimension: longitude {
-    label: "経度"
-    type: number
-    sql: ${TABLE}.longitude ;;
-  }
+  # dimension: longitude {
+  #   label: "経度"
+  #   type: number
+  #   sql: ${TABLE}.longitude ;;
+  # }
 
   dimension: os {
     type: string
@@ -81,11 +84,11 @@ view: events {
     sql: ${TABLE}.session_id ;;
   }
 
-  dimension: state {
-    label: "州"
-    type: string
-    sql: ${TABLE}.state ;;
-  }
+  # dimension: state {
+  #   label: "州"
+  #   type: string
+  #   sql: ${TABLE}.state ;;
+  # }
 
   dimension: traffic_source {
     label: "トラフィック・ソース"
@@ -104,11 +107,11 @@ view: events {
     sql: ${TABLE}.user_id ;;
   }
 
-  dimension: zip {
-    label: "郵便番号"
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
+  # dimension: zip {
+  #   label: "郵便番号"
+  #   type: zipcode
+  #   sql: ${TABLE}.zip ;;
+  # }
 
   measure: count {
     type: count
