@@ -2,6 +2,7 @@ view: inventory_items {
 sql_table_name: `looker-private-demo.thelook.inventory_items` ;;
 
 
+
   dimension: id {
     primary_key: yes
     type: number
