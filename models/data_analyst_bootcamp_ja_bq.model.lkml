@@ -72,10 +72,10 @@ explore: users {
   #   filters: [order_items.created_date: "before 1 day ago"]
   # }
   persist_with: daily_etl
-  access_filter: {
-   field: state
-   user_attribute: state
-  }
+  # access_filter: {
+  # field: state
+  # user_attribute: state
+  # }
   join: order_items {
     type: left_outer
     sql_on: ${users.id} = ${order_items.user_id} ;;

@@ -1,5 +1,8 @@
+include: "geography.view"
+
 view: users {
   sql_table_name: `looker-private-demo.thelook.users` ;;
+  extends: [geography]
 
   dimension: id {
     primary_key: yes
@@ -11,19 +14,6 @@ view: users {
     label: "年齢"
     type: number
     sql: ${TABLE}.age ;;
-  }
-
-  dimension: city {
-    label: "都市"
-    type: string
-    sql: ${TABLE}.city ;;
-  }
-
-  dimension: country {
-    label: "国"
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}.country ;;
   }
 
   dimension_group: created {
@@ -71,40 +61,16 @@ view: users {
     required_access_grants: [is_pii_viewer]
   }
 
-  dimension: latitude {
-    label: "姓"
-    type: number
-    sql: ${TABLE}.latitude ;;
-  }
-
-  dimension: longitude {
-    label: "緯度"
-    type: number
-    sql: ${TABLE}.longitude ;;
-  }
-
-  dimension: state {
-    label: "州"
-    type: string
-    sql: ${TABLE}.state ;;
-  }
-
   dimension: traffic_source {
     label: "トラフィック・ソース"
     type: string
     sql: ${TABLE}.traffic_source ;;
   }
 
-  dimension: zip {
-    label: "郵便番号"
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
-
-  dimension: city_and_state {
-    type: string
-    sql:  CONCAT(${city}, ${state}) ;;
-  }
+  # dimension: city_and_state {
+  #   type: string
+  #   sql:  CONCAT(${city}, ${state}) ;;
+  # }
 
   dimension: age_group_buckets  {
     type: tier

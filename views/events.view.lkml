@@ -1,5 +1,8 @@
+include: "geography.view"
+
 view: events {
   sql_table_name: `looker-private-demo.thelook.events` ;;
+  extends: [geography]
 
   dimension: id {
     primary_key: yes
