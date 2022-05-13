@@ -46,12 +46,17 @@ view: users {
     label: "Eメール"
     type: string
     sql: ${TABLE}.email ;;
+    link: {
+      label: "Category Detail Dashboard"
+      url: "/dashboards/1813?Email={{ value }}"
+    }
   }
 
   dimension: first_name {
     label: "名"
     type: string
     sql: ${TABLE}.first_name ;;
+    required_access_grants: [is_pii_viewer]
   }
 
   dimension: gender {
@@ -63,6 +68,7 @@ view: users {
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;
+    required_access_grants: [is_pii_viewer]
   }
 
   dimension: latitude {
@@ -94,6 +100,23 @@ view: users {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
+
+  dimension: city_and_state {
+    type: string
+    sql:  CONCAT(${city}, ${state}) ;;
+  }
+
+  dimension: age_group_buckets  {
+    type: tier
+    sql:  ${age} ;;
+    tiers:  [18, 25, 35, 45, 55, 65, 75, 90]
+    style:  integer
+  }
+
+dimension: traffic_source_is_email {
+  type: yesno
+  sql: ${traffic_source} = "Email" ;;
+}
 
   measure: count {
     type: count

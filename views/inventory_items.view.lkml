@@ -39,6 +39,10 @@ sql_table_name: `looker-private-demo.thelook.inventory_items` ;;
     label: "プロダクト・カテゴリ"
     type: string
     sql: ${TABLE}.product_category ;;
+    link: {
+      label: "View Category Detail"
+      url: "/explore/data_analyst_bootcamp_ja_bq/inventory_items?fields=inventory_items.product_category,inventory_items.product_name,inventory_items.count&f[product_category]={{ value | url_encode }}"
+    }
   }
 
   dimension: product_department {
