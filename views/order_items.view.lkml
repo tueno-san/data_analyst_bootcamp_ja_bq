@@ -10,7 +10,7 @@ view: order_items {
     }
     allowed_value: {
       value: "created_week"
-      label: "Week"
+      label: "週"
     }
     allowed_value: {
       value: "created_month"
