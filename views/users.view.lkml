@@ -1,6 +1,7 @@
-# include: "geography.view"
+include: "geography.view"
+
 view: users {
-  # extends: [geography]
+  extends: [geography]
   sql_table_name: `looker-private-demo.thelook.users` ;;
 
   dimension: id {
@@ -19,46 +20,46 @@ set: users_filds {
     sql: ${TABLE}.age ;;
   }
 
-  dimension: city {
-    group_label: "地理情報"
-    label: "都市"
-    description: "市の情報です。"
-    type: string
-    sql: ${TABLE}.city ;;
-  }
+  # dimension: city {
+  #   group_label: "地理情報"
+  #   label: "都市"
+  #   description: "市の情報です。"
+  #   type: string
+  #   sql: ${TABLE}.city ;;
+  # }
 
-  dimension: country {
-    group_label: "地理情報"
+  # dimension: country {
+  #   group_label: "地理情報"
 
-    label: "国"
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}.country ;;
-  }
+  #   label: "国"
+  #   type: string
+  #   map_layer_name: countries
+  #   sql: ${TABLE}.country ;;
+  # }
 
-  dimension: latitude {
-    label: "経度"
-    type: number
-    sql: ${TABLE}.latitude ;;
-  }
+  # dimension: latitude {
+  #   label: "経度"
+  #   type: number
+  #   sql: ${TABLE}.latitude ;;
+  # }
 
-  dimension: longitude {
-    label: "緯度"
-    type: number
-    sql: ${TABLE}.longitude ;;
-  }
+  # dimension: longitude {
+  #   label: "緯度"
+  #   type: number
+  #   sql: ${TABLE}.longitude ;;
+  # }
 
-  dimension: state {
-    # required_access_grants: [sample]
-    label: "州"
-    type: string
-    sql: ${TABLE}.state ;;
-  }
-  dimension: zip {
-    label: "郵便番号"
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
+  # dimension: state {
+  #   # required_access_grants: [sample]
+  #   label: "州"
+  #   type: string
+  #   sql: ${TABLE}.state ;;
+  # }
+  # dimension: zip {
+  #   label: "郵便番号"
+  #   type: zipcode
+  #   sql: ${TABLE}.zip ;;
+  # }
 
 
   dimension_group: created {
@@ -96,6 +97,7 @@ set: users_filds {
   }
 
   dimension: gender {
+    view_label: "オーダー"
     label: "性別"
     type: string
     sql: ${TABLE}.gender ;;
@@ -119,28 +121,28 @@ set: users_filds {
   }
 
 
-  # filter: incoming_traffic_source {
-  #   type: string
-  #   suggest_dimension: users.traffic_source
-  #   suggest_explore: user
-  # }
+  filter: incoming_traffic_source {
+    type: string
+    suggest_dimension: users.traffic_source
+    suggest_explore: user
+  }
 
-  # dimension: hidden_traffic_source_filter {
-  #   type: yesno
-  #   hidden: yes
-  #   sql: {%condition incoming_traffic_source%}${traffic_source}{%endcondition%};;
-  # }
+  dimension: hidden_traffic_source_filter {
+    type: yesno
+    hidden: yes
+    sql: {%condition incoming_traffic_source%}${traffic_source}{%endcondition%};;
+  }
 
-  # measure: changeable_count_measure {
-  #   type: count_distinct
-  #   sql: ${id} ;;
-  #   filters: [hidden_traffic_source_filter: "yes"]
-  # }
+  measure: changeable_count_measure {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: [hidden_traffic_source_filter: "yes"]
+  }
 
-  # measure: user_life_time_value {
-  #   type: number
-  #   sql: ${user_facts.lifetime_revenue}/${order_items.total_revenue} ;;
-  # }
+  measure: user_life_time_value {
+    type: number
+    sql: ${user_facts.lifetime_revenue}/${order_items.total_revenue} ;;
+  }
 
   measure: count {
     type: count

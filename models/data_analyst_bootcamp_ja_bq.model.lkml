@@ -36,6 +36,15 @@ explore: inventory_items {
 # This explore contains multiple views
 explore: order_items {
   persist_with: order_items
+  # sql_always_where: ${order_items.created_date}>='2012-01-01' ;;
+  # always_filter: {
+  #   filters: [order_items.status: "Complete"]
+  # }
+  # conditionally_filter: {
+  #   filters: [order_items.status: "Complete"]
+  #   unless: [order_items.user_id]
+  # }
+
   group_label: "bootcamp"
   label: "(1) オーダー、アイテム、ユーザー関連"
   view_label: "オーダー"
@@ -81,6 +90,7 @@ explore: order_items {
 }
 
 explore: events {
+  fields: [ALL_FIELDS*,-users.user_life_time_value]
   join: event_session_funnel {
     type: left_outer
     sql_on: ${events.session_id} = ${event_session_funnel.session_id} ;;
@@ -102,6 +112,7 @@ access_grant: sample {
 
 
  explore: users {
+  fields: [ALL_FIELDS*,-users.user_life_time_value]
   # fields: [users_filds*]
   # access_filter: {
   #   field: users.state
@@ -109,3 +120,6 @@ access_grant: sample {
   # }
 
  }
+# named_value_format: jpy {
+#   value_format: "\"¥\"#,##0"
+# }

@@ -98,6 +98,7 @@ dimension: dynamic_timeframe {
   }
 
   dimension: sale_price {
+    description: "売上の情報です。"
     label: "売上"
     type: number
     sql: ${TABLE}.sale_price ;;
